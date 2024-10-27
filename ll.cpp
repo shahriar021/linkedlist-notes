@@ -124,23 +124,48 @@ void reverseRecursive(node*& head) {
     head->next = NULL;
     head = rest;
 }
+
+
+node* revereseKnodes(node* &head,int val){
+    node* prev=NULL;
+    node* curr=head;
+    node* next;
+
+        int c=0;
+    while(curr!=NULL && c<val){
+        next=curr->next;
+
+        curr->next=prev;
+        prev=curr;
+        curr=next;
+        c++;
+    }
+
+    if(next!=NULL){
+            head->next=revereseKnodes(next,val);
+    }
+    return prev;
+}
+
 int main(){
 
     node* head=NULL;
     insertAtTail(head,5);
     insertAtTail(head,55);
     insertAtTail(head,555);
+    insertAtTail(head,5555);
 
     display(head);
 
-    insetAtHead(head,4);
-    display(head);
-    cout<<search(head,55)<<endl;
+    // insetAtHead(head,4);
+    // display(head);
+    // cout<<search(head,55)<<endl;
     // deletion(head,5);
     // deleteAtHead(head);
     // deleteAtHead(head);
     // reverse(head);
-    reverseRecursive(head);
+    // reverseRecursive(head);
+    head = revereseKnodes(head,2);
     display(head);
     return 0;
 }
