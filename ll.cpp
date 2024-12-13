@@ -147,6 +147,38 @@ node* revereseKnodes(node* &head,int val){
     return prev;
 }
 
+bool detectCycle(node* &head){
+
+    node* fast=head;
+    node* slow=head;
+
+    while(fast!=NULL){
+        fast=fast->next->next;
+        slow=slow->next;
+        if(fast==slow){
+            return true;
+        }
+    }
+    return false;
+
+}
+
+void removeCycle(){
+    node* fast=head;
+    node* slow=head;
+
+    do{
+        slow=slow->next;
+        fast=fast->next->next;
+    }while(slow!=fast);
+    fast=head;
+    while(slow->next!=fast->next){
+        slow=slow->next;
+        fast=fast->next;
+    }
+    slow->next=NULL;
+}
+
 int main(){
 
     node* head=NULL;
@@ -165,7 +197,8 @@ int main(){
     // deleteAtHead(head);
     // reverse(head);
     // reverseRecursive(head);
-    head = revereseKnodes(head,2);
-    display(head);
+    // head = revereseKnodes(head,2);
+    //detectCycle(head);
+    cout<<detectCycle(head)<<endl;
     return 0;
 }
