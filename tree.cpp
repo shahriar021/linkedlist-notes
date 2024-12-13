@@ -23,11 +23,7 @@ void preorder(struct Node* root){
         return;
     }
 
-<<<<<<< HEAD
     cout<<root->datatata<<" ";
-=======
-    cout<<root->datatata<<" ";
->>>>>>> boy
     preorder(root->left);
     preorder(root->right);
 }
