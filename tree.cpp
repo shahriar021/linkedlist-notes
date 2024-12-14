@@ -44,7 +44,7 @@ void postorder(struct Node* root){
     }
     postorder(root->left);
     postorder(root->right);
-    cout<<root->data<<" ";
+    cout<<root->data<<" "<<exit;
 }
 
 
